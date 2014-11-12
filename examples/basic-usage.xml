@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rootElement rootAttrivute="1.0"><someElement someAttribute="foo" otherAttribute="bar">Hello world</someElement><anotherOne/></rootElement>
