@@ -1,3 +1,1 @@
-# Manialib\XML
-
-Fluent object interface for writing XML
+More info: https://github.com/manialib/manialib
