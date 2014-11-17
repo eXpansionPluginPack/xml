@@ -4,7 +4,6 @@ namespace Manialib\XML\Tests;
 
 class DriverIterator implements \Iterator
 {
-
     protected $drivers      = array();
     protected $currentIndex = 0;
 
@@ -40,5 +39,4 @@ class DriverIterator implements \Iterator
     {
         return array_key_exists($this->currentIndex, $this->drivers);
     }
-
 }

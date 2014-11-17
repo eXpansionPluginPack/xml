@@ -9,7 +9,6 @@ use PHPUnit_Framework_TestCase;
 
 class ExamplesTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var Renderer
      */
@@ -25,7 +24,7 @@ class ExamplesTest extends PHPUnit_Framework_TestCase
         $tests = array();
         foreach (new ExamplesDirectoryIterator () as $name => $examples) {
             foreach (new DriverIterator () as $driver) {
-                $tests[$name . ' ' . get_class($driver)] = array_merge(array($driver), $examples);
+                $tests[$name.' '.get_class($driver)] = array_merge(array($driver), $examples);
             }
         }
         return $tests;
@@ -36,10 +35,8 @@ class ExamplesTest extends PHPUnit_Framework_TestCase
      */
     public function testExample(DriverInterface $driver, NodeInterface $node, $expectedResult)
     {
-        $this->renderer->setRoot($node);
         $driver->setEventDispatcher($this->renderer->getEventDispatcher());
         $this->renderer->setDriver($driver);
-        $this->assertXmlStringEqualsXmlFile($expectedResult, $this->renderer->getXML());
+        $this->assertXmlStringEqualsXmlFile($expectedResult, $this->renderer->getXML($node));
     }
-
 }

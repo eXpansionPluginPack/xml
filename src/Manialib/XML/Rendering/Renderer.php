@@ -62,18 +62,17 @@ class Renderer implements RendererInterface
         return $this->eventDispatcher;
     }
 
-    function getXML()
+    function getXML(NodeInterface $node)
     {
-        if (!($this->root instanceof NodeInterface)) {
-            throw new Exception('No Manialib\XML\NodeInterface root found.');
-        }
-
-        $this->getEventDispatcher()->addSubscriber($this->root);
+        $this->getEventDispatcher()->addSubscriber($node);
         $this->getEventDispatcher()->dispatch(Events::ADD_SUBSCRIBERS);
 
         $this->getEventDispatcher()->dispatch(Events::PRE_RENDER);
-        $xml = $this->getDriver()->getXML($this->root);
+        $xml = $this->getDriver()->getXML($node);
         $this->getEventDispatcher()->dispatch(Events::POST_RENDER);
+
+        $this->getEventDispatcher()->removeSubscriber($node);
+
         return $xml;
     }
 

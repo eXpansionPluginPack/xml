@@ -8,13 +8,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 interface RendererInterface
 {
 
-    function setRoot(NodeInterface $node);
-
-    /**
-     * @return NodeInterface
-     */
-    function getRoot();
-
     function setDriver(DriverInterface $driver);
 
     /**
@@ -29,5 +22,5 @@ interface RendererInterface
      */
     function getEventDispatcher();
 
-    function getXML();
+    function getXML(NodeInterface $node);
 }

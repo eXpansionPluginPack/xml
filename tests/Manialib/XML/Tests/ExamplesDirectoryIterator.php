@@ -7,7 +7,6 @@ use Symfony\Component\Finder\Finder;
 
 class ExamplesDirectoryIterator implements Iterator
 {
-
     protected $tests        = array();
     protected $currentIndex = null;
     protected $keys         = array();
@@ -15,7 +14,7 @@ class ExamplesDirectoryIterator implements Iterator
     public function __construct(array $examplesPaths = array())
     {
         if (!$examplesPaths) {
-            $examplesPaths[] = __DIR__ . '/../../../'.APP_ROOT.'examples/';
+            $examplesPaths[] = __DIR__.'/../../../'.APP_ROOT.'examples/';
         }
         $examplesFinder = new Finder();
         foreach ($examplesPaths as $path) {
@@ -30,8 +29,8 @@ class ExamplesDirectoryIterator implements Iterator
             if (!file_exists($expect)) {
                 continue;
             }
-            $node                                                       = require $file->getRealPath();
-            $this->tests[$file->getBasename('.' . $file->getExtension())] = array($node, $expect);
+            $node                                                         = require $file->getRealPath();
+            $this->tests[$file->getBasename('.'.$file->getExtension())] = array($node, $expect);
         }
         $this->currentIndex = 0;
         $this->keys         = array_keys($this->tests);
@@ -61,5 +60,4 @@ class ExamplesDirectoryIterator implements Iterator
     {
         return array_key_exists($this->currentIndex, $this->keys);
     }
-
 }
