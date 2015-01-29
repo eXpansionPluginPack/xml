@@ -1,1 +1,1 @@
-More info: https://github.com/manialib/manialib
+Work in progress
